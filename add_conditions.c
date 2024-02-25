@@ -26,14 +26,7 @@ void at_least_one_valid_street_for_each_step(CNF *formula, unsigned num_of_cross
         {
             Clause *cl = create_new_clause(formula);
 
-            if (streets[j].crossroad_from == i)
-            {
-                add_literal_to_clause(cl, true, i, 0, 1);
-            }
-            else
-            {
-                add_literal_to_clause(cl, false, i, 0, 1);
-            }
+            add_literal_to_clause(cl, streets[j].crossroad_from == i, i, streets[j].crossroad_from, streets[j].crossroad_to);
         }
     }
 }
