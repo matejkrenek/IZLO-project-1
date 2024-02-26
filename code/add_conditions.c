@@ -52,7 +52,7 @@ void at_most_one_street_for_each_step(CNF *formula, unsigned num_of_crossroads, 
                 {
                     for (unsigned k2 = 0; k2 < num_of_crossroads; ++k2)
                     {
-                        if (z1 != z2 && k1 != k2)
+                        if (z1 != z2 || k1 != k2)
                         {
                             // pro kazdu jinou dvojici krizovatek (z2, k2)
                             Clause *cl = create_new_clause(formula);
