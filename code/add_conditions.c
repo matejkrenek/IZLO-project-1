@@ -21,10 +21,12 @@ void at_least_one_valid_street_for_each_step(CNF *formula, unsigned num_of_cross
     // ZDE PRIDAT KOD
     for (unsigned i = 0; i < num_of_streets; ++i)
     {
+        // pro kazdy krok cesty i
         Clause *cl = create_new_clause(formula);
 
         for (unsigned j = 0; j < num_of_streets; ++j)
         {
+            // pro kazdou existujici ulici streets[j]
             add_literal_to_clause(cl, true, i, streets[j].crossroad_from, streets[j].crossroad_to);
         }
     }
@@ -89,7 +91,7 @@ void streets_connected(CNF *formula, unsigned num_of_crossroads, unsigned num_of
 
                 for (unsigned k2 = 0; k2 < num_of_crossroads; ++k2)
                 {
-                    // pro každou jinou končící křižovatku
+                    // pro každou následující křižovatku (k, k2)
                     add_literal_to_clause(cl, true, i + 1, k, k2);
                 }
             }
